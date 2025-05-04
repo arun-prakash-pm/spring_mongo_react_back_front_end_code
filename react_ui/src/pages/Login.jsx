@@ -1,10 +1,12 @@
 import "../css/Login.css";
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
   const [mailId, setMailId] = useState('');
   const [password, setPassword] = useState('');
+  const navigate=useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent form reload
@@ -28,6 +30,7 @@ const Login = () => {
         localStorage.setItem('token',data.token)
         console.log(localStorage.getItem('token'))
         console.log(localStorage.getItem('token'))
+        navigate('/dashboard')
       })
     .catch((error) => {
         console.error('Error:',error);
@@ -52,6 +55,7 @@ const Login = () => {
         />
         <button type="submit" id="button-st">LogIn</button>
       </form>
+      <img src="/public"></img>
     </div>
   );
 };

@@ -1,14 +1,18 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-//import Home from './Home';
-import Login from './pages/Login'
-import Home from './pages/Home'
-//import Dashboard from './Dashboard';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+//import Department from './pages/Department/DepartmentList';
 
 function App() {
+  const token = localStorage.getItem("token");
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/dashboard"
+          element={token ? <Dashboard /> : <Navigate to="/login" />}
+        />
         <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
